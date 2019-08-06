@@ -390,7 +390,8 @@ def process_message(_message):
         logging.debug('got BRIDGE_SND opcode')
         BRIDGES = load_dictionary(_message)
         BRIDGES_RX = strftime('%Y-%m-%d %H:%M:%S', localtime(time()))
-        BTABLE['BRIDGES'] = build_bridge_table(BRIDGES)
+        if BRIDGES_INC:
+            BTABLE['BRIDGES'] = build_bridge_table(BRIDGES)
         
     elif opcode == OPCODE['LINK_EVENT']:
         logging.info('LINK_EVENT Received: {}'.format(repr(_message[1:])))
@@ -403,11 +404,11 @@ def process_message(_message):
         p = _message[1:].split(",")
         if p[0] == 'GROUP VOICE':
             if p[1] == 'END':
-                log_message = '{}: {} {}:   IPSC: {:15.15s} PEER: {:8.8s} {:20.20s} SUB: {:8.8s} {:25.25s} TS: {} TGID: {:>5s} {:12.12s} DURATION: {}s'.format(_now, p[0], p[1], p[2], p[4], alias_call(int(p[4]), peer_ids), p[5], alias_short(int(p[5]), subscriber_ids), p[6], p[7], alias_tgid(int(p[7]), talkgroup_ids), p[8])
+                log_message = '{}: {} {}:   IPSC: {:15.15s} PEER: {:8.8s} {:20.20s} SUB: {:8.8s} {:25.25s} TS: {} TGID: {:>5s} {:12.12s} DURATION: {}s'.format(_now[11:], p[0][6:], p[1], p[2], p[4], alias_call(int(p[4]), peer_ids), p[5], alias_short(int(p[5]), subscriber_ids), p[6], p[7], alias_tgid(int(p[7]), talkgroup_ids), int(float(p[8])))
             elif p[1] == 'START':
-                log_message = '{}: {} {}: IPSC: {:15.15s} PEER: {:8.8s} {:20.20s} SUB: {:8.8s} {:25.25s} TS: {} TGID: {:>5s} {:12.12s}'.format(_now, p[0], p[1], p[2], p[4], alias_call(int(p[4]), peer_ids), p[5], alias_short(int(p[5]), subscriber_ids), p[6], p[7], alias_tgid(int(p[7]), talkgroup_ids))
+                log_message = '{}: {} {}: IPSC: {:15.15s} PEER: {:8.8s} {:20.20s} SUB: {:8.8s} {:25.25s} TS: {} TGID: {:>5s} {:12.12s}'.format(_now[11:], p[0][6:], p[1], p[2], p[4], alias_call(int(p[4]), peer_ids), p[5], alias_short(int(p[5]), subscriber_ids), p[6], p[7], alias_tgid(int(p[7]), talkgroup_ids))
             elif p[1] == 'END WITHOUT MATCHING START':
-                log_message = '{}: {} {}: IPSC: {:15.15s} PEER: {:8.8s} {:20.20s} SUB: {:8.8s} {:25.25s} TS: {} TGID: {:>5s} {:12.12s}'.format(_now, p[0], p[1], p[2], p[4], alias_call(int(p[4]), peer_ids), p[5], alias_short(int(p[5]), subscriber_ids), p[6], p[7], alias_tgid(int(p[7]), talkgroup_ids))
+                log_message = '{}: {} {}: IPSC: {:15.15s} PEER: {:8.8s} {:20.20s} SUB: {:8.8s} {:25.25s} TS: {} TGID: {:>5s} {:12.12s}'.format(_now[11:], p[0][6:], p[1], p[2], p[4], alias_call(int(p[4]), peer_ids), p[5], alias_short(int(p[5]), subscriber_ids), p[6], p[7], alias_tgid(int(p[7]), talkgroup_ids))
             else:
                 log_message = '{}: UNKNOWN GROUP VOICE LOG MESSAGE'.format(_now)
         else:
