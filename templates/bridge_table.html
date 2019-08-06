@@ -1,5 +1,4 @@
-<hr>
-<h3>Bridge Group Status Tables:</h3>
+<fieldset style="margin-left:15px;margin-right:15px;font-size:14px"><legend><b><font color="brown">&nbsp; Bridge Group Status Tables &nbsp;</font></b></legend>
 {% for _bridge, _bridge_data in _table.iteritems() %}
 <table style="width:100%; font: 10pt arial, sans-serif">
     <colgroup>
@@ -13,7 +12,7 @@
         <col style="width: 25%" />
     </colgroup>
     <h4>Conference Bridge: {{ _bridge }}</h4>
-    <tr style="width:100%; font: 10pt arial, sans-serif; background-color:#666666; color:white">
+    <tr style="width:100%; font: 10pt arial, sans-serif; background-color:#6A7D8E; color:white">
         <th>System</th>
         <th>Slot</th>
         <th>TGID</th>
@@ -37,3 +36,4 @@
     {% endfor %}
 </table>
 {% endfor %}
+</fieldset>
