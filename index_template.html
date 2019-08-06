@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
    <head>
+  <meta charset="UTF-8">
+  <title>DMRLink monitor</title>
       <script type="text/javascript">
          var sock = null;
          var ellog = null;
@@ -69,15 +71,18 @@
       </script>
    </head>
     <body style="font: 10pt arial, sans-serif">
-         <h1><center>DMRlink Monitoring Server</center></h1>
-         <h3><center><<<system_name>>></center></h3>
-         <hr>
+       <center><div style="width:1250px; margin-top:5px;">
+         <center><span style="color:brown;font-size: 16px; font-weight:bold;">DMRlink Monitoring Server</span></center>
          <noscript>You must enable JavaScript</noscript>
          <style>table, td, th {border: .5px solid black; padding: 2px; border-collapse: collapse; text-align:center;}</style>
          <p id="dmrlink"></p>
          <p id="bridge"></p>
-         <hr>
-         <h3>Event Log Window:</h3>
-         <pre id="log" style="height: 10em; overflow-y: scroll; background-color: #ccc;"></pre>
-    </body>
+         </div>
+  <fieldset style="width: 1200px; margin-left:0px;margin-right:0px;font-size:14px;"><legend><b><font color="brown">&nbsp;.: Call Log Window :.&nbsp;</font></b></legend>
+         <pre id="log" style="height: 20em; text-align: left; overflow-y: scroll; font-size:13px; background-color: #000000; color:#00fd2c;"></pre>
+</fieldset></center>
+    <center>
+     Copyright (c) 2016, 2017, 2018, 2019<br>The Regents of the K0USY Group. All rights reserved.<br>Modified by SP2ONG 2019.<br><br>
+    <!-- THIS COPYRIGHT NOTICE MUST BE DISPLAYED AS A CONDITION OF THE LICENCE GRANT FOR THIS SOFTWARE. ALL DERIVATEIVES WORKS MUST CARRY THIS NOTICE -->  
+   </body>
 </html>
